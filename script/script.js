@@ -15,10 +15,16 @@ addButton.addEventListener("click", () => {
 function printList() {
     const lastItem = todos[todos.length - 1];
     const li = document.createElement("li");
-    li.innerText = lastItem;
     ul.appendChild(li);
+    const icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-trash-can");
+    li.appendChild(icon);
+    const liText = document.createTextNode(lastItem);
+    li.appendChild(liText);
+    li.addEventListener("click", removeFromList);
 }
 
-function removeFromList() {
- // 
+function removeFromList(event) {
+    const index = todos.indexOf(event.target.innerText);
+    todos.splice(index, 1);
 }
